@@ -1,0 +1,28 @@
+
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+
+
+
+
+<div class="header-div">
+<center>
+    <p id="basetitle"><b>~ Gabriel's Great Pizzas ~</b></p>
+</center>
+</div>
+
+
+
+<div id="navigation">
+    <p><b> Site Navigation:</b></p>
+    <ul>
+        <li><a href="{% url 'pizzas:index' %}">Home</a></li>
+        <li><a href="{% url 'pizzas:pizzas' %}">Pizzas</a></li>
+    </ul>
+</div>
+
+
+{% block content %}
+
+{% endblock content %}

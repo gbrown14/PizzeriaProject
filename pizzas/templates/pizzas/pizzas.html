@@ -1,0 +1,21 @@
+{% extends "pizzas/base.html" %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+
+<div class="pizzas">
+    <p><b>Pizzas:</b></p>
+
+    {% for pizza in all_pizzas %}
+
+    <p>
+        <a href="{% url 'pizzas:pizza' pizza.id %}">{{ pizza }}</a>
+    </p>
+
+    {% empty %}
+    <li>No pizzas have been added yet</li>
+    {% endfor %}
+</div>
+
+{% endblock content %}

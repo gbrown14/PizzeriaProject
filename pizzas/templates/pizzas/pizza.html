@@ -1,0 +1,60 @@
+{% extends "pizzas/base.html" %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+
+<div class="pizza">
+    <div>
+        <p> <b>Pizza:</b> {{ pizza.pizza_name }} </p>
+        <div>
+
+            {% if pizza.pizza_name == "Cheese" %}
+                <img src="{% static 'images/cheese.png' %}" width="150px/">
+            {% endif %}
+            
+            {% if pizza.pizza_name == "Hawaiian" %}
+                <img src="{% static 'images/hawaiian.png' %}" width="150px/">
+            {% endif %}
+
+            {% if pizza.pizza_name == "Meat Lovers" %}
+                <img src="{% static 'images/meat_lovers.png' %}" width="150px/">
+            {% endif %}
+            
+            <br>
+
+            <div>
+                <b>Toppings:</b>
+
+                {% for t in toppings %}
+
+                <li> {{ t.topping_name }} </li>
+
+                {% empty %}
+                <li>No toppings have been added so far</li>
+                {% endfor %}
+
+            </div>
+        </div>
+
+    <br>
+
+    <div>
+        <p><b>Most Recent Comments:</b> {{ comment }}</p>
+
+        <ul>
+            {% for c in comments %}
+
+            <p>{{ c.comment_text }}</p>
+            <p><i>-- {{ c.date_added }}</i></p>
+
+            {% empty %}
+            <li>No comments have been added</li>
+            {% endfor %}
+        </ul>
+    <p><a href="{% url 'pizzas:new_comment' pizza.id %}">Add New Comment</a></p>
+    </div>
+    </div>
+</div>
+
+{% endblock content %}
